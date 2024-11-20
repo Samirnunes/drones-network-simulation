@@ -1,0 +1,38 @@
+# docker build -f Dockerfile.server -t drones-simulation .
+# docker run -d --name drones-simulation -e ENVIRONMENT=production drones-simulation
+
+FROM --platform=linux/amd64 python:3.12-slim
+
+ENV PORT 80
+ENV APP_NAME drones_simulation
+ENV WORKDIR /app
+
+ENV PYTHONPATH ${WORKDIR}/src
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR ${WORKDIR}
+EXPOSE ${PORT}
+
+# System update
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends netcat-openbsd curl git wget bash ssh git openssh-client && \
+    rm -rf /var/lib/apt/lists/* /var/tmp/*
+
+# Install Poetry
+RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python && \
+    cd /usr/local/bin && \
+    ln -s /opt/poetry/bin/poetry && \
+    poetry config virtualenvs.create true && \
+    poetry config virtualenvs.path --unset && \
+    poetry config virtualenvs.in-project true
+
+# Copy poetry.lock* in case it doesn't exist in the repo
+COPY ./pyproject.toml ./poetry.lock* ./
+
+ARG INSTALL_DEV=false
+RUN poetry lock --no-update && \
+    bash -c "if [ $INSTALL_DEV == 'true' ] ; then poetry install --no-root ; else poetry install --no-root --only main ; fi"
+
+COPY . ./
+
+CMD ["/bin/bash", "-c", "poetry run python src/${APP_NAME}/api/app.py"]

@@ -1,0 +1,62 @@
+x-global-envs:
+  &global-envs
+    ENV_VAR_A: XXXX
+    ENV_VAR_B: XXXX
+    HOST: "0.0.0.0"
+    PORT: 80
+
+services:
+    drone-1:
+        container_name: drone-1
+        build:
+            context: .
+            dockerfile: "Dockerfile"
+        environment:
+            <<: *global-envs
+            LOCAL_ENV_VAR_A: XXXX
+        networks:
+            app_network:
+                ipv4_address: 192.168.100.10
+        ports:
+            - "80:80"
+        stdin_open: true 
+        tty: true
+
+    drone-2:
+        container_name: drone-2
+        build:
+            context: .
+            dockerfile: "Dockerfile"
+        environment:
+            <<: *global-envs
+            LOCAL_ENV_VAR_A: XXXX
+        networks:
+            app_network:
+                ipv4_address: 192.168.100.11
+        ports:
+            - "81:80"
+        stdin_open: true 
+        tty: true
+
+    drone-3:
+        container_name: drone-3
+        build:
+            context: .
+            dockerfile: "Dockerfile"
+        environment:
+            <<: *global-envs
+            LOCAL_ENV_VAR_A: XXXX
+        networks:
+            app_network:
+                ipv4_address: 192.168.100.12
+        ports:
+            - "82:80"
+        stdin_open: true 
+        tty: true
+
+networks:
+    app_network:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 192.168.100.0/24

@@ -1,0 +1,43 @@
+# IDEs
+.idea
+.vscode
+
+# Environments
+env/
+venv
+venv/
+ENV/
+
+# Project stuff
+.DS_Store
+mysql_data
+postgres_data
+
+# Git
+.git
+.gitignore
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# IPython
+profile_default/
+ipython_config.py
+
+# C extensions
+*.so
+
+#Docker
+Dockerfile
+docker-compose.yml
+
+# Documents
+README.md
+DEVGUIDE.md
+.pre-commit.yaml
+.coverage
+
+/tests
