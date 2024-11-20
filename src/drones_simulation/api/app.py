@@ -1,6 +1,6 @@
-from drones_simulation.services import DronesSimulation
+from drones_simulation.services import Simulation
 
-app = DronesSimulation()
+app = Simulation()
 
 if __name__ == "__main__":
     app.run()

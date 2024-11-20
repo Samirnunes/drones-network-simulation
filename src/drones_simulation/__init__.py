@@ -1,1 +1,1 @@
-from .services.simulation import DronesSimulation
+from .services.simulation import Simulation

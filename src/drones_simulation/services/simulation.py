@@ -1,7 +1,9 @@
 from drones_simulation.models import Drone
 
 
-class DronesSimulation:
+class Simulation:
+
+    DRONE = Drone()
 
     def run():
         pass
