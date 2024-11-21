@@ -15,6 +15,11 @@ class Behavior(ABC):
     def __init__(self, drone: Drone, communicator: Communicator) -> None:
         self._drone = drone
         self._communicator = communicator
+        self._init_drone()
+
+    @abstractmethod
+    def _init_drone(self):
+        raise NotImplementedError
 
     @abstractmethod
     def steps(self):
@@ -24,8 +29,18 @@ class Behavior(ABC):
         raise NotImplementedError
 
 
+class Attacker(Behavior):
+
+    def _init_drone(self):
+        self._drone.pos = 0
+        self._drone.vel = 0
+
+    def steps(self):
+        pass
+
+
 class BehaviorRouter:
-    _BEHAVIOR_MAP: Dict[str, Behavior] = {}
+    _BEHAVIOR_MAP: Dict[str, Behavior] = {"attacker": Attacker}
 
     @classmethod
     def route(cls, key: str) -> Behavior:
