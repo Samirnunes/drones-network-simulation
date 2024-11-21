@@ -1,1 +1,6 @@
-from .config import COMMUNICATOR_CONFIG, DRONE_INITIAL_CONFIG
+from .config import (
+    TCP_COMMUNICATOR_CONFIG,
+    TCP_DRONE_SIMULATION_CONFIG,
+    CommunicatorConfig,
+    SimulationConfig,
+)

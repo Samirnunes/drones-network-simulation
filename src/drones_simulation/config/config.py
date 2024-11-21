@@ -1,16 +1,14 @@
-from typing import List
-
 from pydantic_settings import BaseSettings
 
 
-class _DroneConfig(BaseSettings):
-    BEHAVIOR: str
+class SimulationConfig(BaseSettings):
+    DRONE_BEHAVIOR: str = "attacker"
 
 
-class _CommunicatorConfig(BaseSettings):
-    HOST: str
-    PORT: int
+class CommunicatorConfig(BaseSettings):
+    HOST: str = "0.0.0.0"
+    PORT: int = "80"
 
 
-DRONE_INITIAL_CONFIG = _DroneConfig()
-COMMUNICATOR_CONFIG = _CommunicatorConfig()
+TCP_DRONE_SIMULATION_CONFIG = SimulationConfig()
+TCP_COMMUNICATOR_CONFIG = CommunicatorConfig()
