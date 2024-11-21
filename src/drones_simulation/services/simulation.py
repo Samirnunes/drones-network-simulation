@@ -2,7 +2,7 @@ from drones_simulation.config import TCP_DRONE_SIMULATION_CONFIG, SimulationConf
 from drones_simulation.log import logger
 from drones_simulation.models.base import BaseBehavior
 from drones_simulation.services.behaviors import BehaviorRouter
-from drones_simulation.services.communicators import TCPCommunicator
+from drones_simulation.services.connector import TCPConnector
 
 
 class TCPDroneSimulation:
@@ -10,7 +10,7 @@ class TCPDroneSimulation:
     CONFIG: SimulationConfig = TCP_DRONE_SIMULATION_CONFIG
 
     def __init__(self) -> None:
-        communicator = TCPCommunicator()
+        communicator = TCPConnector()
         self._behavior: BaseBehavior = BehaviorRouter.route(self.CONFIG.DRONE_BEHAVIOR)(
             communicator
         )

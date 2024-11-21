@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
 
-from drones_simulation.config import CommunicatorConfig
+from drones_simulation.config import ConnectorConfig
 from drones_simulation.models import Drone
 
 
-class BaseCommunicator(ABC):
-    CONFIG: CommunicatorConfig
+class BaseConnector(ABC):
+    CONFIG: ConnectorConfig
 
 
 class BaseBehavior(ABC):
@@ -16,7 +16,7 @@ class BaseBehavior(ABC):
     Distributed ones need a communicator as a parameter to communicate with other drones.
     """
 
-    def __init__(self, communicator: BaseCommunicator) -> None:
+    def __init__(self, communicator: BaseConnector) -> None:
         self._communicator = communicator
         self._drone: Drone
         self._init_drone()

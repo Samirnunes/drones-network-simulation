@@ -2,7 +2,7 @@
 
 ## Content
 
-(IN PROGRESS)
+`TODO`: complete `Attacker` and `OnMission` behaviors in `src/drones_simulation/services/behaviors`. 
 
 ## Running
 

@@ -5,10 +5,10 @@ class SimulationConfig(BaseSettings):
     DRONE_BEHAVIOR: str = "attacker"
 
 
-class CommunicatorConfig(BaseSettings):
+class ConnectorConfig(BaseSettings):
     HOST: str = "0.0.0.0"
     PORT: int = "80"
 
 
 TCP_DRONE_SIMULATION_CONFIG = SimulationConfig()
-TCP_COMMUNICATOR_CONFIG = CommunicatorConfig()
+TCP_CONNECTOR_CONFIG = ConnectorConfig()
