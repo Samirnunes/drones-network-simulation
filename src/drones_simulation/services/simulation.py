@@ -10,12 +10,12 @@ class TCPDroneSimulation:
     CONFIG: SimulationConfig = TCP_DRONE_SIMULATION_CONFIG
 
     def __init__(self) -> None:
-        communicator = TCPConnector()
+        connector = TCPConnector()
         self._behavior: BaseBehavior = BehaviorRouter.route(self.CONFIG.DRONE_BEHAVIOR)(
-            communicator
+            connector
         )
         logger.info(
-            f"Loaded behavior {self._behavior.__class__.__name__} with {communicator.__class__.__name__}"
+            f"Loaded behavior {self._behavior.__class__.__name__} with {connector.__class__.__name__}"
         )
 
     def run(self) -> None:

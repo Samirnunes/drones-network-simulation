@@ -17,7 +17,7 @@ class BaseBehavior(ABC):
     """
 
     def __init__(self, connector: BaseConnector) -> None:
-        self._communicator = connector
+        self._connector = connector
         self._drone: Drone
         self._init_drone()
 
