@@ -12,15 +12,14 @@ class Behavior(ABC):
     Distributed ones need a communicator as a parameter to communicate with other drones.
     """
 
-    def __init__(self, drone: Drone, communicator: Communicator):
+    def __init__(self, drone: Drone, communicator: Communicator) -> None:
         self._drone = drone
         self._communicator = communicator
 
     @abstractmethod
-    def step(self):
+    def steps(self):
         """
-        An step of behavior.
-        Must implement a timestep using `yield`.
+        Must implement a generator for drone's behavior using `yield`.
         """
         raise NotImplementedError
 
@@ -29,5 +28,5 @@ class BehaviorRouter:
     _BEHAVIOR_MAP: Dict[str, Behavior] = {}
 
     @classmethod
-    def route(cls, key: str):
+    def route(cls, key: str) -> Behavior:
         return cls._BEHAVIOR_MAP[key]

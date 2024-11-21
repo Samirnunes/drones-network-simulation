@@ -14,5 +14,6 @@ class Drone:
         logger.info(f"Loaded behavior: {self._behavior.__class__.__name__}")
 
     def run(self) -> None:
+        steps = self._behavior.steps()
         while True:
-            next(self._behavior.step())
+            next(steps)
