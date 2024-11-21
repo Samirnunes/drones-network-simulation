@@ -15,3 +15,7 @@ Then, go to project's root directory (where the `docker-compose.yml` file is) an
 ## Install Poetry (for dev)
 
 - https://python-poetry.org/docs/#installing-with-the-official-installer
+
+## References
+
+- Python Sockets (TCP): https://realpython.com/python-sockets/
