@@ -1,7 +1,5 @@
 x-global-envs:
   &global-envs
-    ENV_VAR_A: XXXX
-    ENV_VAR_B: XXXX
     HOST: "0.0.0.0"
     PORT: 80
 
@@ -13,7 +11,7 @@ services:
             dockerfile: "Dockerfile"
         environment:
             <<: *global-envs
-            LOCAL_ENV_VAR_A: XXXX
+            DRONE_BEHAVIOR: attacker
         networks:
             app_network:
                 ipv4_address: 192.168.100.10
@@ -29,7 +27,7 @@ services:
             dockerfile: "Dockerfile"
         environment:
             <<: *global-envs
-            LOCAL_ENV_VAR_A: XXXX
+            DRONE_BEHAVIOR: on-mission
         networks:
             app_network:
                 ipv4_address: 192.168.100.11
@@ -45,7 +43,7 @@ services:
             dockerfile: "Dockerfile"
         environment:
             <<: *global-envs
-            LOCAL_ENV_VAR_A: XXXX
+            DRONE_BEHAVIOR: on-mission
         networks:
             app_network:
                 ipv4_address: 192.168.100.12

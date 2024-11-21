@@ -20,6 +20,6 @@ class TCPDroneSimulation:
 
     def run(self) -> None:
         logger.info("Starting simulation...")
-        # steps = self._behavior.steps()
-        # while True:
-        #    next(steps)
+        steps = self._behavior.steps()
+        while True:
+            next(steps)
