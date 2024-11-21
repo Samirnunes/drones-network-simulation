@@ -5,6 +5,7 @@ from drones_simulation.services.behaviors import Attacker
 
 
 class BehaviorRouter:
+
     _BEHAVIOR_MAP: Dict[str, BaseBehavior] = {"attacker": Attacker}
 
     @classmethod
