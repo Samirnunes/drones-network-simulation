@@ -12,12 +12,12 @@ class BaseBehavior(ABC):
     """
     Controls drone's behavior.
     There are two types of actions: local and distributed.
-    Local actions doesn't need a communicator.
-    Distributed ones need a communicator as a parameter to communicate with other drones.
+    Local actions doesn't need a connector.
+    Distributed ones need a connector as a parameter to communicate with other drones.
     """
 
-    def __init__(self, communicator: BaseConnector) -> None:
-        self._communicator = communicator
+    def __init__(self, connector: BaseConnector) -> None:
+        self._communicator = connector
         self._drone: Drone
         self._init_drone()
 
