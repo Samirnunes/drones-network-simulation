@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Dict
 
+import numpy as np
+
 from drones_simulation.models import Communicator, Drone
 
 
@@ -32,8 +34,8 @@ class Behavior(ABC):
 class Attacker(Behavior):
 
     def _init_drone(self):
-        self._drone.pos = 0
-        self._drone.vel = 0
+        self._drone.pos = np.array([0, 0, 0])
+        self._drone.vel = np.array([0, 0, 0])
 
     def steps(self):
         pass
