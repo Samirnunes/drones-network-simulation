@@ -1,4 +1,4 @@
-from drones_simulation.services import Simulation
+from drones_simulation import Simulation
 
 app = Simulation()
 

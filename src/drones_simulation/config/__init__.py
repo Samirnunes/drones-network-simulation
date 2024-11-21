@@ -1,1 +1,1 @@
-from .config import DRONE_CONFIG
+from .config import DRONE_CONFIG, COMMUNICATOR_CONFIG
