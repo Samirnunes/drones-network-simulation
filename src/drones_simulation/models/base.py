@@ -5,7 +5,6 @@ from drones_simulation.models import Drone
 
 
 class BaseCommunicator(ABC):
-
     CONFIG: CommunicatorConfig
 
 
