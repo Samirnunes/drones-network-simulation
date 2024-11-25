@@ -4,9 +4,11 @@
 
 `TODO`: 
 
-- complete `Attacker` and `OnMission` behaviors in `src/drones_simulation/services/behaviors`. 
-
 - complete `TcpConnector` in `src/drones_simulation/services/connectors`.
+
+- add a new `Connector`, which will be used by the `Attacker` to invade the `OnMission` drones.
+
+- complete `Attacker` and `OnMission` behaviors in `src/drones_simulation/services/behaviors`.
 
 ## Running
 
