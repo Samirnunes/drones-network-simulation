@@ -11,13 +11,13 @@ services:
             dockerfile: "Dockerfile"
         environment:
             <<: *global-envs
-            DRONE_BEHAVIOR: attacker
+            DRONE_BEHAVIOR: invaded
         networks:
             app_network:
                 ipv4_address: 192.168.100.10
         ports:
             - "80:80"
-        stdin_open: true 
+        stdin_open: true
         tty: true
 
     drone-2:
@@ -33,7 +33,7 @@ services:
                 ipv4_address: 192.168.100.11
         ports:
             - "81:80"
-        stdin_open: true 
+        stdin_open: true
         tty: true
 
     drone-3:
@@ -49,7 +49,7 @@ services:
                 ipv4_address: 192.168.100.12
         ports:
             - "82:80"
-        stdin_open: true 
+        stdin_open: true
         tty: true
 
 networks:

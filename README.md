@@ -2,9 +2,9 @@
 
 ## Content
 
-`TODO`: 
+`TODO`:
 
-- complete `Attacker` and `OnMission` behaviors in `src/drones_simulation/services/behaviors`. 
+- complete `Attacker` and `OnMission` behaviors in `src/drones_simulation/services/behaviors`.
 
 - complete `TcpConnector` in `src/drones_simulation/services/connectors`.
 
@@ -19,6 +19,11 @@ Then, go to project's root directory (where the `docker-compose.yml` file is) an
 ## Install Poetry (for dev)
 
 - https://python-poetry.org/docs/#installing-with-the-official-installer
+
+After installing `poetry`, run on terminal:
+
+- `poetry install`
+- `pre-commit install`
 
 ## References
 
