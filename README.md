@@ -4,11 +4,7 @@
 
 `TODO`:
 
-- complete `TcpConnector` in `src/drones_simulation/services/connectors`.
-
 - complete `Invaded` and `OnMission` behaviors in `src/drones_simulation/services/behaviors`.
-
-- complete `InvadedSimulation` and `OnMissionSimulation` simulations in `src/drones_simulation/services/simulations`.
 
 - add a graphical way (animated plot) to see drones' positions changing.
 
