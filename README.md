@@ -8,6 +8,12 @@
 
 - complete `Invaded` and `OnMission` behaviors in `src/drones_simulation/services/behaviors`.
 
+- complete `InvadedSimulation` and `OnMissionSimulation` simulations in `src/drones_simulation/services/simulations`.
+
+- add a graphical way (animated plot) to see drones' positions changing.
+
+- add connection intensity variable in `Drone`. Besides, there must be a region next to its companions that a drone need to stay in to maintain a good connection intensity.
+
 ## Running
 
 Firstly, execute Docker (on Windows, you must open Docker Desktop).
