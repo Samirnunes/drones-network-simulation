@@ -1,6 +1,6 @@
-from drones_simulation import TCPDroneSimulation
+from drones_simulation import Main
 
-app = TCPDroneSimulation()
+app = Main()
 
 if __name__ == "__main__":
     app.run()

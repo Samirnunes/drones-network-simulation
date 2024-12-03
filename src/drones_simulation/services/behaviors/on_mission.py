@@ -1,15 +1,10 @@
-from typing import Generator
-
-import numpy as np
-
-from ...models import Drone
 from ...models.base import BaseBehavior
 
 
 class OnMission(BaseBehavior):
-
-    def _init_drone(self) -> None:
-        self._drone = Drone(np.array([0, 0, 0]), np.array([1, 1, 1]))
+    """
+    Drone doing a package rescue mission. The objective is to reach the package location.
+    """
 
     def steps(self) -> None:
         pass

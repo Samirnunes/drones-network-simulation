@@ -1,8 +1,9 @@
 import socket
 
-from drones_simulation.config import TCP_CONNECTOR_CONFIG, ConnectorConfig
+from drones_simulation.config import CONNECTOR_CONFIG, ConnectorConfig
+from drones_simulation.models.base import BaseConnector
 
 
-class TCPConnector:
+class TCPConnector(BaseConnector):
 
-    CONFIG: ConnectorConfig = TCP_CONNECTOR_CONFIG
+    CONFIG: ConnectorConfig = CONNECTOR_CONFIG

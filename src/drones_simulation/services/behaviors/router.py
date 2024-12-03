@@ -14,4 +14,4 @@ class BehaviorRouter:
 
     @classmethod
     def route(cls, key: str) -> type[BaseBehavior]:
-        return cls._BEHAVIOR_MAP[key]
+        return cls._BEHAVIOR_MAP[key.lower()]
