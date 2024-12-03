@@ -5,5 +5,5 @@ import numpy as np
 
 @dataclass
 class Drone:
-    pos: np.ndarray
-    vel: np.ndarray
+    position: np.ndarray
+    velocity: np.ndarray

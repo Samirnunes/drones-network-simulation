@@ -1,7 +1,8 @@
 from .config import (
     CONNECTOR_CONFIG,
-    SIMULATION_CONFIG,
-    MAIN_CONFIG,
+    BEHAVIOR_CONFIG,
+    DRONE_CONFIG,
+    DroneConfig,
     ConnectorConfig,
-    SimulationConfig,
+    BehaviorConfig,
 )

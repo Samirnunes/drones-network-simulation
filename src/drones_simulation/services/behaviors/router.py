@@ -1,14 +1,14 @@
 from typing import Dict
 
 from ...models.base import BaseBehavior
-from ...services.behaviors import Invaded
-from ...services.behaviors.on_mission import OnMission
+from ...services.behaviors import InvadedLeader, Leader, OnMission
 
 
 class BehaviorRouter:
 
     _BEHAVIOR_MAP: Dict[str, type[BaseBehavior]] = {
-        "invaded": Invaded,
+        "leader": Leader,
+        "invaded-leader": InvadedLeader,
         "on-mission": OnMission,
     }
 

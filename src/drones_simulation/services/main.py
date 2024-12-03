@@ -1,13 +1,11 @@
-from ..config import CONNECTOR_CONFIG, MAIN_CONFIG, SIMULATION_CONFIG
-from .simulations.router import SimulationRouter
+from ..config import BEHAVIOR_CONFIG, CONNECTOR_CONFIG, DRONE_CONFIG
+from .simulation import Simulation
 
 
 class Main:
 
     def __init__(self) -> None:
-        self._simulation = SimulationRouter.route(MAIN_CONFIG.BEHAVIOR)(
-            MAIN_CONFIG.BEHAVIOR, SIMULATION_CONFIG, CONNECTOR_CONFIG
-        )
+        self._simulation = Simulation(DRONE_CONFIG, BEHAVIOR_CONFIG, CONNECTOR_CONFIG)
 
     def run(self) -> None:
         self._simulation.run()
