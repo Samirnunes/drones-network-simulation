@@ -5,16 +5,22 @@ import numpy as np
 from drones_simulation.log import logger
 
 from ...models.behavior import BaseBehavior
-from ...models.message import Message, Move, Stop
+from ...models.message import Heartbeat, Message, Move, Stop
 
 
 class Leader(BaseBehavior):
 
     def run(self) -> None:
+        i = 0
         while True:
             time.sleep(1)
-            if np.linalg.norm(self.drone.position - self.target) > 2:
+            if (
+                np.linalg.norm(self.drone.position - self.target) > 2
+            ):  # TODO: parameterize distance to target to be considered as win
                 self._move(self.target)
+                i += 1
+                if i % 2 == 0:
+                    self._broadcast(Heartbeat(self.drone.position))
             else:
                 self._stop()
 

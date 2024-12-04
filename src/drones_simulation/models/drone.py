@@ -7,3 +7,5 @@ import numpy as np
 class Drone:
     position: np.ndarray
     velocity: np.ndarray
+    radius: float
+    isAlive: bool

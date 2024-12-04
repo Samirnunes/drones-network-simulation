@@ -3,7 +3,7 @@ import numpy as np
 from drones_simulation.log import logger
 
 from ...models.behavior import BaseBehavior
-from ...models.message import Message, Move, Stop
+from ...models.message import Heartbeat, Message, Move, Stop
 
 
 class OnMission(BaseBehavior):
@@ -12,7 +12,7 @@ class OnMission(BaseBehavior):
     """
 
     def run(self) -> None:
-        while True:
+        while self.drone.isAlive:
             self._receive_message()
 
     def _receive_message(self) -> None:
@@ -23,6 +23,8 @@ class OnMission(BaseBehavior):
                 self._move(message.target)
             if isinstance(message, Stop):
                 self._stop()
+            if isinstance(message, Heartbeat):
+                self._evaluateHeartbeat(message.position)
 
     def _move(self, target: np.ndarray) -> None:
         super()._move(target)
@@ -33,3 +35,8 @@ class OnMission(BaseBehavior):
         logger.info(
             "Drone stopped at position: " + np.array2string(self.drone.position)
         )
+
+    def _evaluateHeartbeat(self, leader_position: np.ndarray) -> None:
+        if np.linalg.norm(leader_position - self.drone.position) < self.drone.radius:
+            self.drone.isAlive = False
+            logger.warning("Drone too far away, terminating.")

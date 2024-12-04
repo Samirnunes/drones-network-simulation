@@ -16,3 +16,8 @@ class Move(Message):
 @dataclass
 class Stop(Message):
     pass
+
+
+@dataclass
+class Heartbeat(Message):
+    position: np.ndarray
