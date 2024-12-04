@@ -23,15 +23,5 @@ class OnMission(BaseBehavior):
                 self._move(message.target)
 
     def _move(self, target: np.ndarray) -> None:
-        direction = target - self.drone.position
-        direction = direction / np.linalg.norm(direction)
-
-        new_velocity = self.drone.velocity + 0.8 * direction
-        self.drone.velocity = (
-            np.linalg.norm(self.drone.velocity)
-            * new_velocity
-            / np.linalg.norm(new_velocity)
-        )
-
+        super()._move(target)
         logger.info("Drone position: " + np.array2string(self.drone.position))
-        self.drone.position += self.drone.velocity
