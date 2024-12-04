@@ -21,7 +21,15 @@ class OnMission(BaseBehavior):
             self.connector.received_message = None
             if isinstance(message, Move):
                 self._move(message.target)
+            if isinstance(message, Stop):
+                self._stop()
 
     def _move(self, target: np.ndarray) -> None:
         super()._move(target)
         logger.info("Drone position: " + np.array2string(self.drone.position))
+
+    def _stop(self) -> None:
+        super()._stop()
+        logger.info(
+            "Drone stopped at position: " + np.array2string(self.drone.position)
+        )

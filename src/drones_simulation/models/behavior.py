@@ -45,3 +45,6 @@ class BaseBehavior(ABC):
         )
 
         self.drone.position += self.drone.velocity
+
+    def _stop(self) -> None:
+        self.drone.velocity = np.array([0, 0])
