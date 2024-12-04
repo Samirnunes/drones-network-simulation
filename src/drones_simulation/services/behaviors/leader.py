@@ -4,11 +4,20 @@ import numpy as np
 
 from drones_simulation.log import logger
 
+from ...config import BehaviorConfig, ConnectorConfig
 from ...models.behavior import BaseBehavior
 from ...models.message import Heartbeat, Message, Move, Stop
 
 
 class Leader(BaseBehavior):
+
+    def __init__(
+        self,
+        behavior_config: BehaviorConfig,
+        connector_config: ConnectorConfig,
+    ) -> None:
+        super().__init__(behavior_config, connector_config)
+        self.target = np.array(behavior_config.TARGET)
 
     def run(self) -> None:
         i = 0
