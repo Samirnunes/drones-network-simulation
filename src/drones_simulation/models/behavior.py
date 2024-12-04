@@ -24,7 +24,7 @@ class BaseBehavior(ABC):
             np.array([behavior_config.INITIAL_POS_X, behavior_config.INITIAL_POS_Y]),
             np.array([1, 1]),
         )
-        self.package_pos = np.array(behavior_config.PACKAGE_POS)
+        self.target = np.array(behavior_config.TARGET)
         self.connector = ConnectorRouter.route(connector_config.TYPE)(connector_config)
         self.connector.start_server()
         self.connector.connect_to_hosts()

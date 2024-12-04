@@ -13,10 +13,10 @@ class Leader(BaseBehavior):
     def run(self) -> None:
         while True:
             time.sleep(1)
-            self._move_to_package_pos()
+            self._move()
 
-    def _move_to_package_pos(self) -> None:
-        direction = self.package_pos - self.drone.position
+    def _move(self) -> None:
+        direction = self.target - self.drone.position
         direction = direction / np.linalg.norm(direction)
 
         new_velocity = self.drone.velocity + 0.8 * direction
@@ -28,7 +28,7 @@ class Leader(BaseBehavior):
 
         logger.info("Leader position: " + np.array2string(self.drone.position))
         self.drone.position += self.drone.velocity
-        self._broadcast(Move(self.package_pos))
+        self._broadcast(Move(self.target))
 
     def _broadcast(self, message: Message) -> None:
         self.connector.broadcast(message)
