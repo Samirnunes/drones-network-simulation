@@ -1,5 +1,8 @@
+import ast
 from typing import List
 
+import numpy as np
+from pydantic import field_validator
 from pydantic_settings import BaseSettings
 
 
@@ -9,7 +12,8 @@ class DroneConfig(BaseSettings):
 
 class BehaviorConfig(BaseSettings):
     PACKAGE_POS: List = [10, 20]
-    INITIAL_POS: List = [0, 0]
+    INITIAL_POS_X: float = 0
+    INITIAL_POS_Y: float = 0
     INITIAL_VEL: List = [1, 1]
 
 

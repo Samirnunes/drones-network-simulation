@@ -10,7 +10,7 @@ class Message(ABC):
 
 @dataclass
 class Move(Message):
-    direction: np.ndarray
+    target: np.ndarray
 
 
 @dataclass

@@ -20,7 +20,10 @@ class BaseBehavior(ABC):
         behavior_config: BehaviorConfig,
         connector_config: ConnectorConfig,
     ) -> None:
-        self.drone = Drone(np.array([0, 0]), np.array([1, 1]))
+        self.drone = Drone(
+            np.array([behavior_config.INITIAL_POS_X, behavior_config.INITIAL_POS_Y]),
+            np.array([1, 1]),
+        )
         self.package_pos = np.array(behavior_config.PACKAGE_POS)
         self.connector = ConnectorRouter.route(connector_config.TYPE)(connector_config)
         self.connector.start_server()
