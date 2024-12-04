@@ -1,17 +1,35 @@
 x-global-envs:
   &global-envs
+    TYPE: "tcp"
     HOST: "0.0.0.0"
-    PORT: 80
+    PORT: 90
     DRONES_NUMBER: 3
 
 services:
+    observer:
+        container_name: observer
+        build:
+            context: .
+            dockerfile: "Dockerfile.observer"
+        environment:
+            <<: *global-envs
+            NAME: observer
+        networks:
+            app_network:
+                ipv4_address: 192.168.100.13
+        ports:
+            - "80:80"
+        stdin_open: true
+        tty: true
+
     drone-1:
         container_name: drone-1
         build:
             context: .
-            dockerfile: "Dockerfile"
+            dockerfile: "Dockerfile.drone"
         environment:
             <<: *global-envs
+            NAME: drone-1
             BEHAVIOR: leader
             INITIAL_POS_X: 1
             INITIAL_POS_Y: 1
@@ -19,7 +37,7 @@ services:
             app_network:
                 ipv4_address: 192.168.100.10
         ports:
-            - "80:80"
+            - "81:80"
         stdin_open: true
         tty: true
 
@@ -27,9 +45,10 @@ services:
         container_name: drone-2
         build:
             context: .
-            dockerfile: "Dockerfile"
+            dockerfile: "Dockerfile.drone"
         environment:
             <<: *global-envs
+            NAME: drone-2
             BEHAVIOR: on-mission
             INITIAL_POS_X: 1
             INITIAL_POS_Y: 0
@@ -37,7 +56,7 @@ services:
             app_network:
                 ipv4_address: 192.168.100.11
         ports:
-            - "81:80"
+            - "82:80"
         stdin_open: true
         tty: true
 
@@ -45,9 +64,10 @@ services:
         container_name: drone-3
         build:
             context: .
-            dockerfile: "Dockerfile"
+            dockerfile: "Dockerfile.drone"
         environment:
             <<: *global-envs
+            NAME: drone-3
             BEHAVIOR: on-mission
             INITIAL_POS_X: 0
             INITIAL_POS_Y: 1
@@ -55,7 +75,7 @@ services:
             app_network:
                 ipv4_address: 192.168.100.12
         ports:
-            - "82:80"
+            - "83:80"
         stdin_open: true
         tty: true
 

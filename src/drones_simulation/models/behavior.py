@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 import numpy as np
 
 from ..config import BehaviorConfig, ConnectorConfig
+from ..models.message import InformObserver
 from ..services.connectors.router import ConnectorRouter
 from .drone import Drone
 
@@ -26,6 +27,7 @@ class BaseBehavior(ABC):
             behavior_config.RADIUS,
             True,
         )
+        self.name = connector_config.NAME
         self.connector = ConnectorRouter.route(connector_config.TYPE)(connector_config)
         self.connector.start_server()
         self.connector.connect_to_hosts()
@@ -46,6 +48,10 @@ class BaseBehavior(ABC):
         )
 
         self.drone.position += self.drone.velocity
+        self._inform_observer()
 
     def _stop(self) -> None:
         self.drone.velocity = np.array([0, 0])
+
+    def _inform_observer(self) -> None:
+        self.connector.send_to_observer(InformObserver(self.name, self.drone.position))

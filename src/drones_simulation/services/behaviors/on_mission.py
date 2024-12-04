@@ -3,7 +3,7 @@ import numpy as np
 from drones_simulation.log import logger
 
 from ...models.behavior import BaseBehavior
-from ...models.message import Heartbeat, Message, Move, Stop
+from ...models.message import Heartbeat, Move, Stop
 
 
 class OnMission(BaseBehavior):
@@ -19,15 +19,15 @@ class OnMission(BaseBehavior):
         )
 
     def _receive_message(self) -> None:
-        if self.connector.received_message is not None:
-            message = self.connector.received_message
-            self.connector.received_message = None
-            if isinstance(message, Move):
-                self._move(message.target)
-            if isinstance(message, Stop):
-                self._stop()
-            if isinstance(message, Heartbeat):
-                self._evaluateHeartbeat(message.position)
+        if len(self.connector.received_messages) > 0:
+            for message in self.connector.received_messages:
+                if isinstance(message, Move):
+                    self._move(message.target)
+                if isinstance(message, Stop):
+                    self._stop()
+                if isinstance(message, Heartbeat):
+                    self._evaluateHeartbeat(message.position)
+            self.connector.received_messages.clear()
 
     def _move(self, target: np.ndarray) -> None:
         super()._move(target)

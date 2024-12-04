@@ -1,6 +1,6 @@
 from typing import List
 
-import numpy as np
+
 from pydantic_settings import BaseSettings
 
 
@@ -18,11 +18,14 @@ class BehaviorConfig(BaseSettings):
 
 
 class ConnectorConfig(BaseSettings):
+    NAME: str = "drone-1"
     TYPE: str = "tcp"
     HOST: str = "0.0.0.0"
-    PORT: int = "80"
-    DRONES_NUMBER: int = 4
+    PORT: int = 80
+    DRONES_NUMBER: int = 3
 
+
+TIMESTEP = 4
 
 DRONE_CONFIG = DroneConfig()
 BEHAVIOR_CONFIG = BehaviorConfig()

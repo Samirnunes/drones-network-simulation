@@ -21,3 +21,9 @@ class Stop(Message):
 @dataclass
 class Heartbeat(Message):
     position: np.ndarray
+
+
+@dataclass
+class InformObserver(Message):
+    name: str
+    position: np.ndarray

@@ -1,7 +1,7 @@
 from typing import Dict
 
 from ...models.behavior import BaseBehavior
-from ...services.behaviors import InvadedLeader, Leader, OnMission
+from . import InvadedLeader, Leader, OnMission
 
 
 class BehaviorRouter:
