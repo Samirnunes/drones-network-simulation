@@ -20,6 +20,7 @@ class Leader(BaseBehavior):
                 self._move(self.target)
                 i += 1
                 if i % 2 == 0:
+                    time.sleep(0.1)
                     self._broadcast(Heartbeat(self.drone.position))
             else:
                 self._stop()

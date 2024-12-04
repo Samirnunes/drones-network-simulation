@@ -14,6 +14,9 @@ class OnMission(BaseBehavior):
     def run(self) -> None:
         while self.drone.isAlive:
             self._receive_message()
+        logger.info(
+            "Drone lost connection at position: " + np.array2string(self.drone.position)
+        )
 
     def _receive_message(self) -> None:
         if self.connector.received_message is not None:
@@ -37,6 +40,6 @@ class OnMission(BaseBehavior):
         )
 
     def _evaluateHeartbeat(self, leader_position: np.ndarray) -> None:
-        if np.linalg.norm(leader_position - self.drone.position) < self.drone.radius:
+        if np.linalg.norm(leader_position - self.drone.position) > self.drone.radius:
             self.drone.isAlive = False
-            logger.warning("Drone too far away, terminating.")
+            logger.info("Drone too far away, terminating.")

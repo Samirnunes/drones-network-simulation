@@ -16,7 +16,7 @@ class BehaviorConfig(BaseSettings):
     INITIAL_POS_Y: float = 0
     INITIAL_VEL_X: float = 1
     INITIAL_VEL_Y: float = 1
-    RADIUS: float = 3
+    RADIUS: float = 5
 
 
 class ConnectorConfig(BaseSettings):
