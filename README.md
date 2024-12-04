@@ -2,17 +2,23 @@
 
 ## Content
 
+A fleet of drones is flying towards a objective. There is a leader drone who regularly broadcasts the objective's position to the others. We simulate an attack where the leader drone is compromised and now sends to each drone a fake objective position. To maintain strong connectivity, each drone must remain within a certain radius of at least one other drone. If a drone becomes too isolated and exceeds this radius, it loses its connection and self-terminates.
+
 `TODO`:
+
+- change message between leader and other drones to pass package position.
+
+- initialize each drone on a different position.
 
 - complete `Invaded` and `OnMission` behaviors in `src/drones_simulation/services/behaviors`.
 
-- add a graphical way (animated plot) to see drones' positions changing.
+- add a graphical way (animated plot) to see visualize attack.
 
-- add connection intensity variable in `Drone`. Besides, there must be a region next to its companions that a drone need to stay in to maintain a good connection intensity.
+- add connection intensity variable in `Drone`. There must be a radius that a drone need to stay in to maintain a good connection intensity.
 
 ## Running
 
-Firstly, execute Docker (on Windows, you must open Docker Desktop).
+First, execute Docker (on Windows, you must open Docker Desktop).
 
 Then, go to project's root directory (where the `docker-compose.yml` file is) and run on terminal:
 
