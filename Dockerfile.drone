@@ -3,7 +3,6 @@
 
 FROM --platform=linux/amd64 python:3.12-slim
 
-ENV PORT 80
 ENV APP_NAME drones_simulation
 ENV WORKDIR /app
 
@@ -11,7 +10,6 @@ ENV PYTHONPATH ${WORKDIR}/src
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR ${WORKDIR}
-EXPOSE ${PORT}
 
 # System update
 RUN apt-get update && \

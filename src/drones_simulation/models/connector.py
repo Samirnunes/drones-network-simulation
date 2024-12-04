@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
-
-import numpy as np
+from typing import List
 
 from ..config import ConnectorConfig
 from .message import Message
@@ -9,7 +8,7 @@ from .message import Message
 class BaseConnector(ABC):
     def __init__(self, config: ConnectorConfig) -> None:
         self._config = config
-        self.received_message: Message | None = None
+        self.received_messages: List[Message]
 
     @abstractmethod
     def start_server(self) -> None:
@@ -25,4 +24,8 @@ class BaseConnector(ABC):
 
     @abstractmethod
     def stop(self) -> None:
+        raise NotImplementedError
+
+    @abstractmethod
+    def send_to_observer(self, message: Message) -> None:
         raise NotImplementedError

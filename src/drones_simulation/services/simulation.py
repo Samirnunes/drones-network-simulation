@@ -1,7 +1,3 @@
-from typing import Self
-
-import numpy as np
-
 from drones_simulation.config import ConnectorConfig
 from drones_simulation.models.behavior import BaseBehavior
 

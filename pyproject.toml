@@ -4,13 +4,16 @@ version = "0.1.0"
 description = ""
 authors = ["Samir Nunes da Silva"]
 readme = "README.md"
-packages = [{ include = "drones_simulation", from = "src" }]
+packages = [{ include = "drones_simulation", from = "src" },
+            { include = "observer", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
 numpy = "^2.1.3"
 pydantic = "^2.10.0"
 pydantic-settings = "^2.6.1"
+matplotlib = "^3.9.3"
+fastapi = "^0.115.6"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.2"
