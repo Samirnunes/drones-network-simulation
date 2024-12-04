@@ -14,7 +14,7 @@ services:
             <<: *global-envs
             BEHAVIOR: leader
             INITIAL_POS_X: 1
-            INITIAL_POS_Y: 2
+            INITIAL_POS_Y: 1
         networks:
             app_network:
                 ipv4_address: 192.168.100.10
@@ -31,6 +31,8 @@ services:
         environment:
             <<: *global-envs
             BEHAVIOR: on-mission
+            INITIAL_POS_X: 1
+            INITIAL_POS_Y: 0
         networks:
             app_network:
                 ipv4_address: 192.168.100.11
@@ -47,6 +49,8 @@ services:
         environment:
             <<: *global-envs
             BEHAVIOR: on-mission
+            INITIAL_POS_X: 0
+            INITIAL_POS_Y: 1
         networks:
             app_network:
                 ipv4_address: 192.168.100.12

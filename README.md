@@ -6,8 +6,6 @@ A fleet of drones is flying towards a objective. There is a leader drone who reg
 
 `TODO`:
 
-- initialize each drone on a different position.
-
 - complete `Invaded` and `OnMission` behaviors in `src/drones_simulation/services/behaviors`.
 
 - add a graphical way (animated plot) to see visualize attack.

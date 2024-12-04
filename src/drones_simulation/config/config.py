@@ -14,7 +14,8 @@ class BehaviorConfig(BaseSettings):
     TARGET: List = [10, 20]
     INITIAL_POS_X: float = 0
     INITIAL_POS_Y: float = 0
-    INITIAL_VEL: List = [1, 1]
+    INITIAL_VEL_X: float = 1
+    INITIAL_VEL_Y: float = 1
 
 
 class ConnectorConfig(BaseSettings):

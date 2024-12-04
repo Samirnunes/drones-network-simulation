@@ -22,7 +22,7 @@ class BaseBehavior(ABC):
     ) -> None:
         self.drone = Drone(
             np.array([behavior_config.INITIAL_POS_X, behavior_config.INITIAL_POS_Y]),
-            np.array([1, 1]),
+            np.array([behavior_config.INITIAL_VEL_X, behavior_config.INITIAL_VEL_Y]),
         )
         self.target = np.array(behavior_config.TARGET)
         self.connector = ConnectorRouter.route(connector_config.TYPE)(connector_config)
