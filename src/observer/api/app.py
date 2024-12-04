@@ -6,7 +6,7 @@ from fastapi import FastAPI, Response
 from fastapi.responses import HTMLResponse
 
 from drones_simulation.config import CONNECTOR_CONFIG
-from observer.observer import Observer
+from observer import Observer
 
 observer = Observer(CONNECTOR_CONFIG)
 
