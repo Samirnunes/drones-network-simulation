@@ -27,7 +27,6 @@ class BaseBehavior(ABC):
             behavior_config.RADIUS,
             True,
         )
-        self.target = np.array(behavior_config.TARGET)
         self.name = connector_config.NAME
         self.connector = ConnectorRouter.route(connector_config.TYPE)(connector_config)
         self.connector.start_server()
