@@ -3,7 +3,7 @@ from typing import Self
 import numpy as np
 
 from drones_simulation.config import ConnectorConfig
-from drones_simulation.models.base import BaseBehavior
+from drones_simulation.models.behavior import BaseBehavior
 
 from ..config import BehaviorConfig, DroneConfig
 from ..log import logger

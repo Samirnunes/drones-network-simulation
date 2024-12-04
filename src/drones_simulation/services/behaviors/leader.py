@@ -1,6 +1,6 @@
 import numpy as np
 
-from ...models.base import BaseBehavior
+from ...models.behavior import BaseBehavior
 from ...models.message import Message, Move
 
 

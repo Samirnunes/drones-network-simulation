@@ -3,31 +3,8 @@ from abc import ABC, abstractmethod
 import numpy as np
 
 from ..config import BehaviorConfig, ConnectorConfig
-from ..models.message import Message
 from ..services.connectors.router import ConnectorRouter
 from .drone import Drone
-
-
-class BaseConnector(ABC):
-    def __init__(self, config: ConnectorConfig) -> None:
-        self._config = config
-        self.received_message: Message | None = None
-
-    @abstractmethod
-    def start_server(self) -> None:
-        raise NotImplementedError
-
-    @abstractmethod
-    def broadcast(self, message: Message) -> None:
-        raise NotImplementedError
-
-    @abstractmethod
-    def connect_to_hosts(self) -> None:
-        raise NotImplementedError
-
-    @abstractmethod
-    def stop(self) -> None:
-        raise NotImplementedError
 
 
 class BaseBehavior(ABC):

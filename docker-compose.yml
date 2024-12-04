@@ -2,6 +2,7 @@ x-global-envs:
   &global-envs
     HOST: "0.0.0.0"
     PORT: 80
+    DRONES_NUMBER: 3
 
 services:
     drone-1:
@@ -11,7 +12,8 @@ services:
             dockerfile: "Dockerfile"
         environment:
             <<: *global-envs
-            DRONE_BEHAVIOR: invaded
+            BEHAVIOR: invaded_leader
+            INITIAL_POS:
         networks:
             app_network:
                 ipv4_address: 192.168.100.10
@@ -27,7 +29,7 @@ services:
             dockerfile: "Dockerfile"
         environment:
             <<: *global-envs
-            DRONE_BEHAVIOR: on-mission
+            BEHAVIOR: on-mission
         networks:
             app_network:
                 ipv4_address: 192.168.100.11
@@ -43,7 +45,7 @@ services:
             dockerfile: "Dockerfile"
         environment:
             <<: *global-envs
-            DRONE_BEHAVIOR: on-mission
+            BEHAVIOR: on-mission
         networks:
             app_network:
                 ipv4_address: 192.168.100.12

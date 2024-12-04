@@ -1,4 +1,4 @@
-from ...models.base import BaseBehavior
+from ...models.behavior import BaseBehavior
 
 
 class InvadedLeader(BaseBehavior):

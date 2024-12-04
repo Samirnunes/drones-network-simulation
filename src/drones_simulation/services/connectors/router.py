@@ -1,6 +1,6 @@
 from typing import Dict
 
-from ...models.base import BaseConnector
+from ...models.connector import BaseConnector
 from .tcp import TCPConnector
 
 

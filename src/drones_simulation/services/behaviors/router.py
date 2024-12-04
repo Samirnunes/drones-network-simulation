@@ -1,6 +1,6 @@
 from typing import Dict
 
-from ...models.base import BaseBehavior
+from ...models.behavior import BaseBehavior
 from ...services.behaviors import InvadedLeader, Leader, OnMission
 
 

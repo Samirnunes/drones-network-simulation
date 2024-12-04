@@ -5,7 +5,7 @@ from typing import Any, List
 
 from drones_simulation.log import logger
 
-from ...models.base import BaseConnector
+from ...models.connector import BaseConnector
 from ...models.message import Message
 
 

@@ -1,6 +1,6 @@
 import numpy as np
 
-from ...models.base import BaseBehavior
+from ...models.behavior import BaseBehavior
 from ...models.message import Message, Move, Stop
 
 
@@ -17,8 +17,8 @@ class OnMission(BaseBehavior):
         if self.connector.received_message is not None:
             message = self.connector.received_message
             self.connector.received_message = None
-        if isinstance(message, Move):
-            self._move(message.direction)
+            if isinstance(message, Move):
+                self._move(message.direction)
 
     def _move(self, direction: np.ndarray) -> None:
         pass
