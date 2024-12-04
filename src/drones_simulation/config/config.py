@@ -1,6 +1,5 @@
 from typing import List
 
-
 from pydantic_settings import BaseSettings
 
 
@@ -12,8 +11,8 @@ class BehaviorConfig(BaseSettings):
     TARGET: List = [10, 20]
     INITIAL_POS_X: float = 0
     INITIAL_POS_Y: float = 0
-    INITIAL_VEL_X: float = 1
-    INITIAL_VEL_Y: float = 1
+    INITIAL_VEL_X: float = 0.2
+    INITIAL_VEL_Y: float = 0.2
     RADIUS: float = 5
 
 
@@ -25,7 +24,7 @@ class ConnectorConfig(BaseSettings):
     DRONES_NUMBER: int = 3
 
 
-TIMESTEP = 4
+TIMESTEP = 0.1
 
 DRONE_CONFIG = DroneConfig()
 BEHAVIOR_CONFIG = BehaviorConfig()

@@ -28,6 +28,9 @@ class Observer:
         self.ax.set_xlim(-2, 22)
         self.ax.set_ylim(-2, 22)
 
+        self.ax.plot(10, 20, "rx", markersize=10, label="Target")
+        self.ax.legend()
+
         plt.ion()
         plt.show()
 

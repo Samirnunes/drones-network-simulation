@@ -4,6 +4,7 @@ import threading
 import time
 from typing import Any, Dict, List
 
+from drones_simulation.config import TIMESTEP
 from drones_simulation.log import logger
 
 from ...models.connector import BaseConnector
@@ -77,7 +78,7 @@ class TCPConnector(BaseConnector):
             try:
                 client_socket.sendall(serialized_message)
                 logger.info(f"Sent message: {message}")
-                time.sleep(2)
+                time.sleep(TIMESTEP / 2)
             except Exception as e:
                 logger.error(f"Failed to send message to a client - {e}")
                 time.sleep(2.5)
@@ -88,7 +89,7 @@ class TCPConnector(BaseConnector):
         try:
             self.client_sockets["observer"].sendall(serialized_message)
             logger.info(f"Sent message: {message}")
-            time.sleep(2)
+            time.sleep(TIMESTEP / 2)
         except Exception as e:
             logger.error(f"Failed to send message to the client - {e}")
             time.sleep(4)
