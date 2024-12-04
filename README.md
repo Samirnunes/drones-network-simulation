@@ -10,8 +10,6 @@ A fleet of drones is flying towards a objective. There is a leader drone who reg
 
 - add a graphical way (animated plot) to see visualize attack.
 
-- add connection intensity variable in `Drone`. There must be a radius that a drone need to stay in to maintain a good connection intensity.
-
 ## Running
 
 First, execute Docker (on Windows, you must open Docker Desktop).
