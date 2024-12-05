@@ -27,5 +27,9 @@ class BaseConnector(ABC):
         raise NotImplementedError
 
     @abstractmethod
+    def send_to_drone(self, message: Message, index: int) -> None:
+        raise NotImplementedError
+
+    @abstractmethod
     def send_to_observer(self, message: Message) -> None:
         raise NotImplementedError

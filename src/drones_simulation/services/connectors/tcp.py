@@ -83,6 +83,19 @@ class TCPConnector(BaseConnector):
                 logger.error(f"Failed to send message to a client - {e}")
                 time.sleep(2.5)
 
+    def send_to_drone(self, message: Message, index: int) -> None:
+        """Send a message to a specific client."""
+        serialized_message = pickle.dumps(message)
+        try:
+            if index > self._config.DRONES_NUMBER or index < 1:
+                raise ValueError("Drone index out of range")
+            self.client_sockets[f"drone-{index}"].sendall(serialized_message)
+            logger.info(f"Sent message: {message}")
+            time.sleep(TIMESTEP / 2)
+        except Exception as e:
+            logger.error(f"Failed to send message to the client - {e}")
+            time.sleep(4)
+
     def send_to_observer(self, message: Message) -> None:
         """Send a message to a specific client."""
         serialized_message = pickle.dumps(message)

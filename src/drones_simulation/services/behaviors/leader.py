@@ -24,9 +24,7 @@ class Leader(BaseBehavior):
         i = 0
         while True:
             time.sleep(TIMESTEP)
-            if (
-                np.linalg.norm(self.drone.position - self.target) > 2
-            ):  # TODO: parameterize distance to target to be considered as win
+            if np.linalg.norm(self.drone.position - self.target) > 0.2:
                 self._move(self.target)
                 i += 1
                 if i % 2 == 0:

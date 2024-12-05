@@ -4,12 +4,6 @@
 
 A fleet of drones is flying towards a objective. There is a leader drone who regularly broadcasts the objective's position to the others. We simulate an attack where the leader drone is compromised and now sends to each drone a fake objective position. To maintain strong connectivity, each drone must remain within a certain radius of at least one other drone. If a drone becomes too isolated and exceeds this radius, it loses its connection and self-terminates.
 
-`TODO`:
-
-- Implement `Attacker` behavior in `src/drones_simulation/services/behaviors`.
-
-- Add new `Attacker Drone` on `docker-compose.yml`
-
 ## Running
 
 First, execute Docker (on Windows, you must open Docker Desktop).

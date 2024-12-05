@@ -3,7 +3,7 @@ x-global-envs:
     TYPE: "tcp"
     HOST: "0.0.0.0"
     PORT: 90
-    DRONES_NUMBER: 3
+    DRONES_NUMBER: 6
 
 services:
     observer:
@@ -16,7 +16,7 @@ services:
             NAME: observer
         networks:
             app_network:
-                ipv4_address: 192.168.100.13
+                ipv4_address: 192.168.100.10
         ports:
             - "80:80"
         stdin_open: true
@@ -35,7 +35,7 @@ services:
             INITIAL_POS_Y: 1
         networks:
             app_network:
-                ipv4_address: 192.168.100.10
+                ipv4_address: 192.168.100.11
         ports:
             - "81:80"
         stdin_open: true
@@ -54,7 +54,7 @@ services:
             INITIAL_POS_Y: 0
         networks:
             app_network:
-                ipv4_address: 192.168.100.11
+                ipv4_address: 192.168.100.12
         ports:
             - "82:80"
         stdin_open: true
@@ -73,9 +73,66 @@ services:
             INITIAL_POS_Y: 1
         networks:
             app_network:
-                ipv4_address: 192.168.100.12
+                ipv4_address: 192.168.100.13
         ports:
             - "83:80"
+        stdin_open: true
+        tty: true
+
+    drone-4:
+        container_name: drone-4
+        build:
+            context: .
+            dockerfile: "Dockerfile.drone"
+        environment:
+            <<: *global-envs
+            NAME: drone-4
+            BEHAVIOR: on-mission
+            INITIAL_POS_X: 0
+            INITIAL_POS_Y: 0
+        networks:
+            app_network:
+                ipv4_address: 192.168.100.14
+        ports:
+            - "84:80"
+        stdin_open: true
+        tty: true
+
+    drone-5:
+        container_name: drone-5
+        build:
+            context: .
+            dockerfile: "Dockerfile.drone"
+        environment:
+            <<: *global-envs
+            NAME: drone-5
+            BEHAVIOR: on-mission
+            INITIAL_POS_X: 0
+            INITIAL_POS_Y: 2
+        networks:
+            app_network:
+                ipv4_address: 192.168.100.15
+        ports:
+            - "85:80"
+        stdin_open: true
+        tty: true
+
+    attacker:
+        container_name: drone-6
+        build:
+            context: .
+            dockerfile: "Dockerfile.drone"
+        environment:
+            <<: *global-envs
+            NAME: drone-6
+            BEHAVIOR: attacker
+            INITIAL_POS_X: 5
+            INITIAL_POS_Y: 10
+        networks:
+            app_network:
+                ipv4_address: 192.168.100.16
+        ports:
+            - "86:80"
         stdin_open: true
         tty: true
 
