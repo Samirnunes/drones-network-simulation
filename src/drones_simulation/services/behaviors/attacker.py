@@ -17,7 +17,7 @@ class Attacker(BaseBehavior):
     ) -> None:
         super().__init__(behavior_config, connector_config)
         self.drones_number = connector_config.DRONES_NUMBER
-        self.rand = np.random.default_rng()
+        self.rand = np.random.RandomState(0)
         self.fake_targets = list(self.rand.uniform(0, 20, 2 * (self.drones_number - 1)))
 
     def run(self) -> None:
@@ -34,7 +34,7 @@ class Attacker(BaseBehavior):
                     ),
                     i + 1,
                 )
-            time.sleep(TIMESTEP / 2)
+            time.sleep(2 * TIMESTEP)
 
     def _broadcast(self, message: Message) -> None:
         self.connector.broadcast(message)

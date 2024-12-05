@@ -2,6 +2,8 @@ from abc import ABC, abstractmethod
 
 import numpy as np
 
+from drones_simulation.log import logger
+
 from ..config import BehaviorConfig, ConnectorConfig
 from ..models.message import InformObserver
 from ..services.connectors.router import ConnectorRouter
@@ -25,6 +27,7 @@ class BaseBehavior(ABC):
             np.array([behavior_config.INITIAL_POS_X, behavior_config.INITIAL_POS_Y]),
             np.array([behavior_config.INITIAL_VEL_X, behavior_config.INITIAL_VEL_Y]),
             behavior_config.RADIUS,
+            None,
             True,
         )
         self.name = connector_config.NAME
@@ -36,11 +39,13 @@ class BaseBehavior(ABC):
     def run(self) -> None:
         raise NotImplementedError
 
-    def _move(self, target: np.ndarray) -> None:
-        direction = target - self.drone.position
+    def _move(self, leader_position: np.ndarray) -> None:
+        direction = leader_position - self.drone.position
         direction = direction / np.linalg.norm(direction)
-
-        new_velocity = self.drone.velocity + 0.8 * direction
+        if self.drone.signal_weakness is None:
+            new_velocity = self.drone.velocity + direction
+        else:
+            new_velocity = self.drone.velocity + self.drone.signal_weakness * direction
         self.drone.velocity = (
             np.linalg.norm(self.drone.velocity)
             * new_velocity

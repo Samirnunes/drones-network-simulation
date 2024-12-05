@@ -36,7 +36,7 @@ class Leader(BaseBehavior):
     def _move(self, target: np.ndarray) -> None:
         super()._move(target)
         logger.info("Leader position: " + np.array2string(self.drone.position))
-        self._broadcast(Move(self.target))
+        self._broadcast(Move(self.drone.position))
 
     def _broadcast(self, message: Message) -> None:
         self.connector.broadcast(message)
